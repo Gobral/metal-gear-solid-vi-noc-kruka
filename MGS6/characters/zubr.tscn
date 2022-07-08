@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://textures/zobr-placeholder.png" type="Texture" id=1]
+[ext_resource path="res://controller.tscn" type="PackedScene" id=2]
 
 [sub_resource type="PhysicsMaterial" id=3]
 
@@ -23,3 +24,5 @@ shape = SubResource( 2 )
 
 [node name="sprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
+
+[node name="controller" parent="." instance=ExtResource( 2 )]

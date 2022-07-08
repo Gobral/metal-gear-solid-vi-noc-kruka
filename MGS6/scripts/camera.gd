@@ -15,6 +15,30 @@ func _ready():
 	the_slowik = get_node("../slowik")
 	pass # Replace with function body.
 
+func _input(event):
+	for aa in [ [ the_zubr, "zubr" ], [ the_slowik, "slowik" ] ]:
+		var c = aa[0]
+		var name = aa[1]
+		if not c:
+			continue
+		var input = {}
+		var wasd = [0, 0, 0, 0]
+		var i = 0
+		for dir in [ "up", "left", "down", "right" ]:
+			var action = "%s_%s" % [name, dir]
+			if event.is_action_pressed(action):
+				print("%s - press" % name)
+				wasd[i] += 1
+			if event.is_action_released(action):
+				print("%s - release" % name)
+				wasd[i] -= 1
+			i += 1			
+		input["wasd"] = wasd
+		if event.is_action_pressed("%s_jump" % name):
+			input["jump"] = true
+		c.get_node("controller").push_input(input)
+		
+
 func pass_controls():
 	
 	pass
