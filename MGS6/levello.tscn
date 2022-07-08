@@ -1,7 +1,31 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://characters/zubr.tscn" type="PackedScene" id=1]
+[ext_resource path="res://textures/ground-placeholder.png" type="Texture" id=2]
+[ext_resource path="res://scripts/camera.gd" type="Script" id=3]
+[ext_resource path="res://characters/slowik.tscn" type="PackedScene" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 100, 100 )
 
 [node name="root" type="Node2D"]
 
 [node name="zubr" parent="." instance=ExtResource( 1 )]
+position = Vector2( -200, -121 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2( 0, 20 )
+scale = Vector2( 5, 0.2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource( 1 )
+
+[node name="floor1" type="Sprite" parent="StaticBody2D"]
+texture = ExtResource( 2 )
+
+[node name="eye" type="Camera2D" parent="."]
+current = true
+script = ExtResource( 3 )
+
+[node name="slowik" parent="." instance=ExtResource( 4 )]
+position = Vector2( 177, -256 )

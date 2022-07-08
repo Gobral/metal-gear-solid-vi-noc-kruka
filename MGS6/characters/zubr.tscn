@@ -1,3 +1,25 @@
-[gd_scene format=2]
+[gd_scene load_steps=5 format=2]
 
-[node name="zubr" type="Node2D"]
+[ext_resource path="res://textures/zobr-placeholder.png" type="Texture" id=1]
+
+[sub_resource type="PhysicsMaterial" id=3]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 50, 50 )
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="zubr" type="RigidBody2D"]
+physics_material_override = SubResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )
+
+[node name="sprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
