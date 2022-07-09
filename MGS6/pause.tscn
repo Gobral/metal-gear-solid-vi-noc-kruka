@@ -1,11 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://meniu/okienko_klikniete.png" type="Texture" id=1]
 [ext_resource path="res://meniu/okienko_najechane.png" type="Texture" id=2]
 [ext_resource path="res://meniu/okienko_nieklikniete.png" type="Texture" id=3]
 [ext_resource path="res://meniu/Oswald/static/Oswald-Bold.ttf" type="DynamicFontData" id=4]
-[ext_resource path="res://meniu/skripti/TextureButton3.gd" type="Script" id=5]
-[ext_resource path="res://meniu/skripti/starter.gd" type="Script" id=6]
+[ext_resource path="res://meniu/skripti/rest.gd" type="Script" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 34
@@ -35,7 +34,7 @@ margin_right = 360.0
 margin_bottom = 260.0
 size_flags_vertical = 3
 
-[node name="starter" type="TextureButton" parent="MarginContainer/HBoxContainer/VBoxContainer/meniu\\"]
+[node name="resume" type="TextureButton" parent="MarginContainer/HBoxContainer/VBoxContainer/meniu\\"]
 margin_right = 360.0
 margin_bottom = 84.0
 size_flags_vertical = 3
@@ -43,20 +42,19 @@ texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 1 )
 texture_hover = ExtResource( 2 )
 expand = true
-script = ExtResource( 6 )
 
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/meniu\\/starter"]
-margin_left = 32.0
-margin_top = 9.0
-margin_right = 327.0
-margin_bottom = 68.0
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/meniu\\/resume"]
+margin_left = 31.0
+margin_top = 8.0
+margin_right = 330.0
+margin_bottom = 67.0
 custom_colors/font_color = Color( 0.74902, 0.74902, 0.74902, 1 )
 custom_fonts/font = SubResource( 1 )
-text = "RAVE"
+text = "Resume"
 align = 1
 valign = 1
 
-[node name="optiionesse" type="TextureButton" parent="MarginContainer/HBoxContainer/VBoxContainer/meniu\\"]
+[node name="bback" type="TextureButton" parent="MarginContainer/HBoxContainer/VBoxContainer/meniu\\"]
 margin_top = 88.0
 margin_right = 360.0
 margin_bottom = 172.0
@@ -66,18 +64,18 @@ texture_pressed = ExtResource( 1 )
 texture_hover = ExtResource( 2 )
 expand = true
 
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/meniu\\/optiionesse"]
-margin_left = 31.0
-margin_top = 7.0
-margin_right = 330.0
-margin_bottom = 66.0
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/meniu\\/bback"]
+margin_left = 30.0
+margin_top = 9.0
+margin_right = 329.0
+margin_bottom = 68.0
 custom_colors/font_color = Color( 0.74902, 0.74902, 0.74902, 1 )
 custom_fonts/font = SubResource( 1 )
-text = "Optionez"
+text = "Back to menu"
 align = 1
 valign = 1
 
-[node name="TextureButton3" type="TextureButton" parent="MarginContainer/HBoxContainer/VBoxContainer/meniu\\"]
+[node name="rest" type="TextureButton" parent="MarginContainer/HBoxContainer/VBoxContainer/meniu\\"]
 margin_top = 176.0
 margin_right = 360.0
 margin_bottom = 260.0
@@ -88,11 +86,11 @@ texture_hover = ExtResource( 2 )
 expand = true
 script = ExtResource( 5 )
 
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/meniu\\/TextureButton3"]
-margin_left = 33.0
-margin_top = 12.0
-margin_right = 327.0
-margin_bottom = 66.0
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/meniu\\/rest"]
+margin_left = 31.0
+margin_top = 9.0
+margin_right = 330.0
+margin_bottom = 68.0
 custom_colors/font_color = Color( 0.74902, 0.74902, 0.74902, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "Take a rest"

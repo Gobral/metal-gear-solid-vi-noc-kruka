@@ -57,12 +57,14 @@ func _physics_process(delta):
 	controller.fetch_input()
 	var initial_vel = linear_velocity
 	var jump = false
+	
 	if input_map:
 		jump = ("jump" in input_map and input_map["jump"])
 		if "wasd" in input_map:
 			var wasd = input_map["wasd"]
 			for i in range(4):
 				wasd_mem[i] = movement(wasd_mem[i], wasd[i])
+
 	input_map = null
 	
 	var v = Vector2(0, 0)
@@ -101,9 +103,19 @@ func _physics_process(delta):
 	if onfloor:
 		body.apply_central_impulse(Vector2(af, 0))
 		
-	
 	var sprite = get_node("sprite")
+	var leb = get_node("leb")
+
+	# animationez 
+	if wasd_mem[1] or wasd_mem[3]:
+		sprite.play("walk")
+		leb.play("walk")
+	else:
+		sprite.play("idle")
+		leb.play("idle")
+	
 	sprite.flip_h = facing_left
+	leb.flip_h = facing_left
 	
 	if jump and can_jump():
 		apply_central_impulse(Vector2(0, -JUMP_GOOD))
