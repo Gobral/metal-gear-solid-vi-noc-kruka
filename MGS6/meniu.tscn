@@ -1,3 +1,96 @@
-[gd_scene format=2]
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://meniu/okienko_klikniete.png" type="Texture" id=1]
+[ext_resource path="res://meniu/okienko_najechane.png" type="Texture" id=2]
+[ext_resource path="res://meniu/okienko_nieklikniete.png" type="Texture" id=3]
+[ext_resource path="res://meniu/Oswald/static/Oswald-Bold.ttf" type="DynamicFontData" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 34
+font_data = ExtResource( 4 )
 
 [node name="Node2D" type="Node2D"]
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 0.752
+margin_left = 140.0
+margin_top = 140.0
+margin_right = 500.0
+margin_bottom = 400.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+margin_right = 360.0
+margin_bottom = 260.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+margin_right = 360.0
+margin_bottom = 260.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="meniu\\" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+margin_right = 360.0
+margin_bottom = 260.0
+size_flags_vertical = 3
+
+[node name="TextureButton" type="TextureButton" parent="MarginContainer/HBoxContainer/VBoxContainer/meniu\\"]
+margin_right = 360.0
+margin_bottom = 84.0
+size_flags_vertical = 3
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 1 )
+texture_hover = ExtResource( 2 )
+expand = true
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/meniu\\/TextureButton"]
+margin_left = 32.0
+margin_top = 9.0
+margin_right = 327.0
+margin_bottom = 68.0
+custom_colors/font_color = Color( 0.74902, 0.74902, 0.74902, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "RAVE"
+align = 1
+valign = 1
+
+[node name="TextureButton2" type="TextureButton" parent="MarginContainer/HBoxContainer/VBoxContainer/meniu\\"]
+margin_top = 88.0
+margin_right = 360.0
+margin_bottom = 172.0
+size_flags_vertical = 3
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 1 )
+texture_hover = ExtResource( 2 )
+expand = true
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/meniu\\/TextureButton2"]
+margin_left = 31.0
+margin_top = 7.0
+margin_right = 330.0
+margin_bottom = 66.0
+custom_colors/font_color = Color( 0.74902, 0.74902, 0.74902, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "Optionez"
+align = 1
+valign = 1
+
+[node name="TextureButton3" type="TextureButton" parent="MarginContainer/HBoxContainer/VBoxContainer/meniu\\"]
+margin_top = 176.0
+margin_right = 360.0
+margin_bottom = 260.0
+size_flags_vertical = 3
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 1 )
+texture_hover = ExtResource( 2 )
+expand = true
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/meniu\\/TextureButton3"]
+margin_left = 33.0
+margin_top = 12.0
+margin_right = 327.0
+margin_bottom = 66.0
+custom_colors/font_color = Color( 0.74902, 0.74902, 0.74902, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "Take a rest"
+align = 1
+valign = 1
