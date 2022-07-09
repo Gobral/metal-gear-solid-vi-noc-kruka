@@ -2,7 +2,7 @@ extends RigidBody2D
 
 
 export var JUMP_GOOD = float(150000)
-export var WALK_SPEED = float(20)
+export var WALK_SPEED = float(25)
 export var AIR_RESISTANCE = float(45)
 export var FLY_COOLDOWN = float(-1)
 
@@ -75,9 +75,17 @@ func _physics_process(delta):
 		v = v/vd
 	v.y = 0.0
 	var no_fly_modifier = 1.0
-	if FLY_COOLDOWN < 0.0 and !is_on_floor():
-		no_fly_modifier = .2
+	var onfloor = is_on_floor()
+	if FLY_COOLDOWN < 0.0 and !onfloor:
+		no_fly_modifier = 1.0/6.0
 	body.linear_velocity += v * WALK_SPEED * no_fly_modifier
+	
+	var max_additional_friction = 600.0
+	var af = -body.linear_velocity.x * 15.0
+	af = mass * delta * clamp(af, -max_additional_friction, max_additional_friction)
+	if onfloor:
+		body.apply_central_impulse(Vector2(af, 0))
+		
 	
 	var sprite = get_node("sprite")
 	sprite.flip_h = facing_left
