@@ -23,7 +23,7 @@ animations = [ {
 mode = 2
 mass = 300.0
 physics_material_override = SubResource( 3 )
-gravity_scale = 8.0
+gravity_scale = 16.0
 script = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

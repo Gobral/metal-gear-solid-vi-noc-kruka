@@ -1,10 +1,14 @@
 extends RigidBody2D
 
 
-export var JUMP_GOOD = float(150000)
-export var WALK_SPEED = float(25)
+export var JUMP_GOOD = float(240000)
+export var WALK_SPEED = float(750)
+export var WALK_FORCE = float(500000)
+export var FLOOR_FRICTION = float(300)
 export var AIR_RESISTANCE = float(45)
 export var FLY_COOLDOWN = float(-1)
+export var FLY_MODIFIER = float(0.25)
+export var FLY_BRAKE = float(1)
 
 var facing_left = false
 var last_jump = 0.0
@@ -74,15 +78,26 @@ func _physics_process(delta):
 	if (vd > 1.0):
 		v = v/vd
 	v.y = 0.0
-	var no_fly_modifier = 1.0
 	var onfloor = is_on_floor()
-	if FLY_COOLDOWN < 0.0 and !onfloor:
-		no_fly_modifier = 1.0/6.0
-	body.linear_velocity += v * WALK_SPEED * no_fly_modifier
+	var speed_cap_modifier = 1.0
+	var fly_modifier = FLY_MODIFIER
+	if v.x * initial_vel.x >= 0:
+		var from = 0.75
+		var to = 1.0
+		var vel = abs(initial_vel.x) /  WALK_SPEED
+		vel = (vel - from) / (to - from)
+		vel = 1-vel
+		speed_cap_modifier = clamp(vel, 0, 1)
+	else:
+		fly_modifier = FLY_BRAKE
+	if onfloor:
+		fly_modifier = 1.0
+	var walk_force = delta * v * WALK_FORCE * fly_modifier * speed_cap_modifier
+	body.apply_central_impulse(walk_force)
+	print(speed_cap_modifier, walk_force)
 	
-	var max_additional_friction = 600.0
 	var af = -body.linear_velocity.x * 15.0
-	af = mass * delta * clamp(af, -max_additional_friction, max_additional_friction)
+	af = mass * delta * clamp(af, -FLOOR_FRICTION, FLOOR_FRICTION)
 	if onfloor:
 		body.apply_central_impulse(Vector2(af, 0))
 		

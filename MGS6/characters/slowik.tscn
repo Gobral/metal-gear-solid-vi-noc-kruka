@@ -16,9 +16,13 @@ animations = [ {
 
 [node name="slowik" instance=ExtResource( 1 )]
 mass = 30.0
-JUMP_GOOD = 12000.0
-WALK_SPEED = 30.0
+JUMP_GOOD = 24000.0
+WALK_SPEED = 1000.0
+WALK_FORCE = 100000.0
+FLOOR_FRICTION = 750.0
 FLY_COOLDOWN = 0.167
+FLY_MODIFIER = 1.5
+FLY_BRAKE = 1.5
 
 [node name="CollisionShape2D" parent="." index="0"]
 shape = SubResource( 1 )
