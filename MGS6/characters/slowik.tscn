@@ -49,7 +49,7 @@ animations = [ {
 
 [node name="slowik" instance=ExtResource( 1 )]
 mass = 30.0
-JUMP_GOOD = 24000.0
+JUMP_GOOD = 30000.0
 WALK_SPEED = 1000.0
 WALK_FORCE = 100000.0
 FLOOR_FRICTION = 750.0
