@@ -96,7 +96,6 @@ func _physics_process(delta):
 		fly_modifier = 1.0
 	var walk_force = delta * v * WALK_FORCE * fly_modifier * speed_cap_modifier
 	body.apply_central_impulse(walk_force)
-	print(speed_cap_modifier, walk_force)
 	
 	var af = -body.linear_velocity.x * 15.0
 	af = mass * delta * clamp(af, -FLOOR_FRICTION, FLOOR_FRICTION)
