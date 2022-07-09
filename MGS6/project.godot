@@ -11,7 +11,7 @@ config_version=4
 [application]
 
 config/name="MGS6"
-run/main_scene="res://meniu.tscn"
+run/main_scene="res://levello.tscn"
 config/icon="res://icon.png"
 
 [input]

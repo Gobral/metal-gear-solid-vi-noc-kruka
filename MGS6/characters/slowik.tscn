@@ -18,6 +18,7 @@ animations = [ {
 mass = 30.0
 JUMP_GOOD = 12000.0
 WALK_SPEED = 25.0
+FLY_COOLDOWN = 0.167
 
 [node name="CollisionShape2D" parent="." index="0"]
 shape = SubResource( 1 )

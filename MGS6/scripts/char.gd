@@ -4,11 +4,12 @@ extends RigidBody2D
 export var JUMP_GOOD = float(150000)
 export var WALK_SPEED = float(20)
 export var AIR_RESISTANCE = float(45)
-export var FLY_COOLDOWN = -1
+export var FLY_COOLDOWN = float(-1)
 
 var facing_left = false
-var last_jump = 0
-
+var last_jump = 0.0
+#var size_to_bottom = 1
+	
 	
 func movement(mem, now):
 	if mem > 0:
@@ -25,7 +26,17 @@ func movement(mem, now):
 			return 0
 
 func is_on_floor():
-	return true
+	var space_state = get_world_2d().direct_space_state
+	var cs2 = get_node("CollisionShape2D")
+	# use global coordinates, not local to node
+	var size_to_bottom = cs2.shape.extents.y
+	var width = cs2.shape.extents.x * 0.9875
+	var start = global_position + Vector2(-width, size_to_bottom)
+	var finish = global_position + Vector2(+width, size_to_bottom)
+	var result = space_state.intersect_ray(start, finish, [self])
+	if "position" in result:
+		return true
+	return false
 
 func can_jump():
 	if is_on_floor():
@@ -58,25 +69,26 @@ func _physics_process(delta):
 	elif facing_left and v.x > 0:
 		facing_left = false
 	
-	print("%s - %s" % [ get_node("..").get_path(), wasd_mem])
-	
+
 	var vd = v.dot(v)
 	if (vd > 1.0):
 		v = v/vd
 	v.y = 0.0
-	body.linear_velocity += v * WALK_SPEED
+	var no_fly_modifier = 1.0
+	if FLY_COOLDOWN < 0.0 and !is_on_floor():
+		no_fly_modifier = .2
+	body.linear_velocity += v * WALK_SPEED * no_fly_modifier
 	
 	var sprite = get_node("sprite")
 	sprite.flip_h = facing_left
 	
 	if jump and can_jump():
 		apply_central_impulse(Vector2(0, -JUMP_GOOD))
-		last_jump = FLY_COOLDOWN
-	last_jump -= delta
+		last_jump = 0
+	last_jump += delta
 	
 	var resistance_force = -initial_vel * AIR_RESISTANCE * delta
 	if mass < 1:
 		resistance_force *= mass
 	apply_central_impulse(resistance_force)
 	
-
