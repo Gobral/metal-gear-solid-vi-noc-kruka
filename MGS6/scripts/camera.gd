@@ -34,6 +34,7 @@ func _input(event):
 				wasd[i] -= 1
 			i += 1			
 		input["wasd"] = wasd
+		#print(wasd)
 		if event.is_action_pressed("%s_jump" % name):
 			input["jump"] = true
 		c.get_node("controller").push_input(input)
