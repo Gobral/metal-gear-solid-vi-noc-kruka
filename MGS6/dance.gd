@@ -3,6 +3,8 @@ extends Node2D
 export(Array) var arrow_textures
 
 const arrow_template = preload("arrow.tscn")
+const win = preload("win.tscn")
+const lose = preload("lose.tscn")
 
 var hp = 100.0
 
@@ -73,9 +75,13 @@ func _physics_process(delta):
 	get_node("hp").scale.y = clamp(hp, 0.0, 100.0) * 0.02
 	
 	if hp < 0.0:
+		var l = lose.instance()
+		get_node("..").add_child(l)
 		queue_free()
 	
-	if progress >= 75:
+	if progress >= 25:
+		var w = win.instance()
+		get_node("..").add_child(w)
 		queue_free()
 	
 

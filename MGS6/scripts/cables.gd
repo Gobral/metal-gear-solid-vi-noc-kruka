@@ -1,6 +1,7 @@
 extends Node2D
 
 
+const win = preload("../win.tscn")
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -225,7 +226,8 @@ func refresh_cahnges():
 			else:
 				all_good = false
 		if all_good:
-			
+			var w = win.instance()
+			get_node("..").add_child(w)
 			queue_free()
 			
 	var diode = get_node("diode")

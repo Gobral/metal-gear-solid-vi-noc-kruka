@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://textures/win.png" type="Texture" id=1]
+[ext_resource path="res://znikanko.gd" type="Script" id=2]
+
+[node name="Sprite" type="Sprite"]
+script = ExtResource( 2 )
+
+[node name="Win" type="Sprite" parent="."]
+position = Vector2( 515, 285 )
+texture = ExtResource( 1 )
