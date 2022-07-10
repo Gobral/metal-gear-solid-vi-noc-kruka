@@ -215,6 +215,18 @@ func refresh_cahnges():
 				cable.global_position = get_node("sockets/%stest" % name[0]).default_position + Vector2(0, -10)
 			else:
 				cable.global_position = get_node("sockets/%s%s" % [name[0], cables[ii]]).default_position + Vector2(0, -10)
+		
+		var all_good = true
+		for i in range(5):
+			var wirez = zubr["cables"][i]
+			var wires = slowik["cables"][p[i]]
+			if wirez == wires and wirez > 0:
+				pass
+			else:
+				all_good = false
+		if all_good:
+			
+			queue_free()
 			
 	var diode = get_node("diode")
 	diode.texture = diode.texture_while_on if is_diode_on() else diode.texture_while_off
