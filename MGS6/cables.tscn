@@ -1,0 +1,145 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://scripts/cables.gd" type="Script" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://textures/socket.png" type="Texture" id=3]
+[ext_resource path="res://zwierzaki/zuber-jump/jump_zuber0000.png" type="Texture" id=4]
+[ext_resource path="res://zwierzaki/sowik-jump/jump_sowik0000.png" type="Texture" id=5]
+[ext_resource path="res://textures/socket_test.png" type="Texture" id=6]
+[ext_resource path="res://scripts/wire.gd" type="Script" id=7]
+[ext_resource path="res://textures/diodeoff.png" type="Texture" id=8]
+[ext_resource path="res://diode.gd" type="Script" id=9]
+[ext_resource path="res://textures/diodeon.png" type="Texture" id=10]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="sockets" type="Node2D" parent="."]
+
+[node name="z1" type="Sprite" parent="sockets"]
+position = Vector2( 127, 458 )
+texture = ExtResource( 3 )
+script = ExtResource( 7 )
+
+[node name="z2" type="Sprite" parent="sockets"]
+position = Vector2( 120, 376 )
+texture = ExtResource( 3 )
+script = ExtResource( 7 )
+
+[node name="z3" type="Sprite" parent="sockets"]
+position = Vector2( 116, 288 )
+texture = ExtResource( 3 )
+script = ExtResource( 7 )
+
+[node name="z4" type="Sprite" parent="sockets"]
+position = Vector2( 120, 204 )
+texture = ExtResource( 3 )
+script = ExtResource( 7 )
+
+[node name="z5" type="Sprite" parent="sockets"]
+position = Vector2( 124, 110 )
+texture = ExtResource( 3 )
+script = ExtResource( 7 )
+
+[node name="ztest" type="Sprite" parent="sockets"]
+position = Vector2( 126, 542 )
+texture = ExtResource( 6 )
+script = ExtResource( 7 )
+
+[node name="stest" type="Sprite" parent="sockets"]
+position = Vector2( 881, 562 )
+texture = ExtResource( 6 )
+script = ExtResource( 7 )
+
+[node name="s1" type="Sprite" parent="sockets"]
+position = Vector2( 875, 468 )
+texture = ExtResource( 3 )
+script = ExtResource( 7 )
+
+[node name="s2" type="Sprite" parent="sockets"]
+position = Vector2( 882, 393 )
+texture = ExtResource( 3 )
+script = ExtResource( 7 )
+
+[node name="s3" type="Sprite" parent="sockets"]
+position = Vector2( 891, 307 )
+texture = ExtResource( 3 )
+script = ExtResource( 7 )
+
+[node name="s4" type="Sprite" parent="sockets"]
+position = Vector2( 900, 207 )
+texture = ExtResource( 3 )
+script = ExtResource( 7 )
+
+[node name="s5" type="Sprite" parent="sockets"]
+position = Vector2( 898, 121 )
+texture = ExtResource( 3 )
+script = ExtResource( 7 )
+
+[node name="cables" type="Node2D" parent="."]
+
+[node name="z1" type="Sprite" parent="cables"]
+position = Vector2( 241, 117 )
+texture = ExtResource( 2 )
+script = ExtResource( 7 )
+
+[node name="z2" type="Sprite" parent="cables"]
+position = Vector2( 235, 211 )
+texture = ExtResource( 2 )
+script = ExtResource( 7 )
+
+[node name="z3" type="Sprite" parent="cables"]
+position = Vector2( 221, 288 )
+texture = ExtResource( 2 )
+script = ExtResource( 7 )
+
+[node name="z4" type="Sprite" parent="cables"]
+position = Vector2( 234, 383 )
+texture = ExtResource( 2 )
+script = ExtResource( 7 )
+
+[node name="z5" type="Sprite" parent="cables"]
+position = Vector2( 202, 475 )
+texture = ExtResource( 2 )
+script = ExtResource( 7 )
+
+[node name="s1" type="Sprite" parent="cables"]
+position = Vector2( 769, 139 )
+texture = ExtResource( 2 )
+script = ExtResource( 7 )
+
+[node name="s2" type="Sprite" parent="cables"]
+position = Vector2( 763, 244 )
+texture = ExtResource( 2 )
+script = ExtResource( 7 )
+
+[node name="s3" type="Sprite" parent="cables"]
+position = Vector2( 760, 321 )
+texture = ExtResource( 2 )
+script = ExtResource( 7 )
+
+[node name="s4" type="Sprite" parent="cables"]
+position = Vector2( 737, 414 )
+texture = ExtResource( 2 )
+script = ExtResource( 7 )
+
+[node name="s5" type="Sprite" parent="cables"]
+position = Vector2( 745, 493 )
+texture = ExtResource( 2 )
+script = ExtResource( 7 )
+
+[node name="hands" type="Node2D" parent="."]
+
+[node name="zubr" type="Sprite" parent="hands"]
+position = Vector2( 474, 121 )
+texture = ExtResource( 4 )
+
+[node name="slowik" type="Sprite" parent="hands"]
+position = Vector2( 589, 128 )
+texture = ExtResource( 5 )
+
+[node name="diode" type="Sprite" parent="."]
+position = Vector2( 514, 528 )
+texture = ExtResource( 8 )
+script = ExtResource( 9 )
+texture_while_on = ExtResource( 10 )
