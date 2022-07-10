@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/slowik-placeholder.png-7ad14fb524be80d8213d5ef6fee4e052.stex"
+path="res://.import/multimetr2.png-0e51e47a590dec6283f130cdd805eacc.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/slowik-placeholder.png"
-dest_files=[ "res://.import/slowik-placeholder.png-7ad14fb524be80d8213d5ef6fee4e052.stex" ]
+source_file="res://textures/multimetr2.png"
+dest_files=[ "res://.import/multimetr2.png-0e51e47a590dec6283f130cdd805eacc.stex" ]
 
 [params]
 
