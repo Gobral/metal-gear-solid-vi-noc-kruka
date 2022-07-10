@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Moj_utwor_60.ogg-bb9e10f3bb4fde5aa59e878c07f30fb3.oggstr"
+
+[deps]
+
+source_file="res://textures/Moj_utwor_60.ogg"
+dest_files=[ "res://.import/Moj_utwor_60.ogg-bb9e10f3bb4fde5aa59e878c07f30fb3.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
