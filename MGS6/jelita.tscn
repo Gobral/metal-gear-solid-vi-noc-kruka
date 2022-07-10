@@ -44,8 +44,12 @@ animations = [ {
 script = ExtResource( 19 )
 
 [node name="slowik" parent="." instance=ExtResource( 2 )]
+contacts_reported = 4
+contact_monitor = true
 
 [node name="zubr" parent="." instance=ExtResource( 1 )]
+contacts_reported = 4
+contact_monitor = true
 
 [node name="eye" parent="." instance=ExtResource( 3 )]
 
@@ -378,3 +382,8 @@ shape = SubResource( 4 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="pierozi/StaticBody2D12"]
 frames = SubResource( 5 )
 animation = "spadu"
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PoolVector2Array( 0, 0, 302, 63 )
+width = 20.0
+joint_mode = 1

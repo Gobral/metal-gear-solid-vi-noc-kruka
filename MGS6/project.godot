@@ -11,14 +11,8 @@ config_version=4
 [application]
 
 config/name="MGS6"
-run/main_scene="res://levello.tscn"
-config/icon="res://icon.png"
-
-[display]
-
-window/size/width=1920
-window/size/height=1080
-window/size/fullscreen=true
+run/main_scene="res://meniu.tscn"
+config/icon="res://textures/logo.png"
 
 [input]
 
