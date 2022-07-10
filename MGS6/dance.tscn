@@ -1,6 +1,51 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://dance.gd" type="Script" id=1]
+[ext_resource path="res://textures/podloga1.png" type="Texture" id=2]
+[ext_resource path="res://ikony/strzalki/strzalki_hud.png" type="Texture" id=3]
+[ext_resource path="res://ikony/strzalki/strzalka lewo pressed.png" type="Texture" id=4]
+[ext_resource path="res://ikony/strzalki/strzalka prawo pressed.png" type="Texture" id=5]
+[ext_resource path="res://ikony/strzalki/strzalka dul pressed.png" type="Texture" id=6]
+[ext_resource path="res://ikony/strzalki/stralka lewo.png" type="Texture" id=7]
+[ext_resource path="res://ikony/strzalki/strzalka gora.png" type="Texture" id=8]
+[ext_resource path="res://ikony/strzalki/strzalka gora pressed.png" type="Texture" id=9]
+[ext_resource path="res://ikony/strzalki/strzalka dul.png" type="Texture" id=10]
+[ext_resource path="res://ikony/strzalki/strzalka prawo.png" type="Texture" id=11]
+[ext_resource path="res://textures/ground-placeholder.png" type="Texture" id=12]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 400, 40 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 300, 40 )
 
 [node name="dance" type="Node2D"]
 script = ExtResource( 1 )
+arrow_textures = [ ExtResource( 7 ), ExtResource( 10 ), ExtResource( 8 ), ExtResource( 11 ), ExtResource( 4 ), ExtResource( 6 ), ExtResource( 9 ), ExtResource( 5 ) ]
+
+[node name="Podloga1" type="Sprite" parent="."]
+position = Vector2( 217, 204 )
+texture = ExtResource( 2 )
+
+[node name="skucha" type="Area2D" parent="."]
+position = Vector2( 518, 495 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="skucha"]
+position = Vector2( 0, 123 )
+shape = SubResource( 1 )
+
+[node name="destroy" type="Area2D" parent="."]
+position = Vector2( 518, 495 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="destroy"]
+position = Vector2( 0, 32 )
+shape = SubResource( 2 )
+
+[node name="StrzalkiHud" type="Sprite" parent="."]
+position = Vector2( 518, 495 )
+texture = ExtResource( 3 )
+
+[node name="hp" type="Sprite" parent="."]
+position = Vector2( 57, 349 )
+scale = Vector2( 0.465, 2.67 )
+texture = ExtResource( 12 )
