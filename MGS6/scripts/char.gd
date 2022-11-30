@@ -14,7 +14,6 @@ var facing_left = false
 var last_jump = 0.0
 #var size_to_bottom = 1
 	
-	
 func movement(mem, now):
 	if mem > 0:
 		if now > 0:

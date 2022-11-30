@@ -15,14 +15,12 @@ var pierogus_shape = null
 func _ready():
 	var cscript = load("res://scripts/pierogus.gd")
 	for p in pierozi.get_children():
-		p.add_child()
+		#p.add_child()
 		p.set_script(cscript)
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	var zubrowe_pierogi = zubr.get_colliding_bodies()
 	var sowikowe_pierogi = sowik.get_colliding_bodies()
-	
-
 	
 	for p in pierozi.get_children():
 		if p.leci: spaduwa(p.get_node("AnimatedSprite"))
@@ -33,7 +31,6 @@ func _physics_process(delta):
 		lina.set_point_position(0, sowik.global_position)
 		for p in sowikowe_pierogi:
 			if p.get_parent().get_name() == "pierozi": 
-				p.get_node("CollisionShape2D").disabled = true
 				hak_u_sowika = false
 				wspinanie = true
 				zubr.gravity_scale = 0
@@ -48,9 +45,8 @@ func _physics_process(delta):
 		zubr.global_position = zubr.global_position.move_toward(do_pierozka, 10)
 		if do_pierozka.distance_to(zubr.global_position) < 1: 
 			wspinanie = false
-			print("koniec")
-			pierogus_shape.get_node("CollisionShape2D").disabled = false
 			zubr.gravity_scale = 16
+			zubr.get_node("CollisionShape2D").disabled = false 
 	
 	else:
 		for p in zubrowe_pierogi:

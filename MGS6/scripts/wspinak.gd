@@ -1,6 +1,5 @@
 extends RigidBody2D
 
-
-func _ready():
-	gravity_scale = 0
 	
+func _init():	
+	get_node("CollisionShape2D").disabled = true 

@@ -53,7 +53,7 @@ func set_camera_position():
 	set_global_position(t)
 	
 
-func _process(delta):
+func _process(_delta):
 	pass_controls()
 	set_camera_position()
 	
