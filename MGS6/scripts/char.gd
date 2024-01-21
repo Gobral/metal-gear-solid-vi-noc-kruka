@@ -12,6 +12,8 @@ export var FLY_BRAKE = float(1)
 
 var facing_left = false
 var last_jump = 0.0
+var player_interaction_sprite: Sprite
+
 #var size_to_bottom = 1
 	
 func movement(mem, now):
@@ -40,6 +42,9 @@ func is_on_floor():
 	if "position" in result:
 		return true
 	return false
+
+func _ready():
+	player_interaction_sprite = get_child(4).get_child(0).get_child(0)
 
 func can_jump():
 	if is_on_floor():
@@ -136,3 +141,12 @@ func _physics_process(delta):
 		resistance_force *= mass
 	apply_central_impulse(resistance_force)
 	
+	
+func _on_InteractionArena_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
+	if area.is_in_group("PierogArea"):
+		player_interaction_sprite.visible = true
+
+
+func _on_InteractionArena_area_shape_exited(area_rid, area, area_shape_index, local_shape_index):
+	if area.is_in_group("PierogArea"):
+		player_interaction_sprite.visible = false
