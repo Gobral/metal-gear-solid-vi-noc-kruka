@@ -60,3 +60,5 @@ FLY_BRAKE = 1.5
 [node name="leb" parent="." index="3"]
 frames = SubResource( 3 )
 animation = "fly"
+
+[node name="InteractionArena" parent="." index="4" groups=["SlowikArea"]]

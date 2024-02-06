@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://zwierzaki/pierogus/pierog0007.png" type="Texture" id=1]
 [ext_resource path="res://zwierzaki/pierogus/pierog0003.png" type="Texture" id=2]
@@ -14,6 +14,8 @@
 [ext_resource path="res://zwierzaki/pierogus/pierog0000.png" type="Texture" id=12]
 [ext_resource path="res://zwierzaki/pierogus/pierog0006.png" type="Texture" id=13]
 [ext_resource path="res://zwierzaki/pierogus/pierog0012.png" type="Texture" id=14]
+[ext_resource path="res://scripts/pierogus.gd" type="Script" id=15]
+[ext_resource path="res://ikony/interakcje/e.png" type="Texture" id=16]
 
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 139, 53 )
@@ -31,6 +33,7 @@ extents = Vector2( 143, 61 )
 
 [node name="pierozik" type="StaticBody2D"]
 position = Vector2( 352, -498 )
+script = ExtResource( 15 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -48,3 +51,11 @@ animation = "spadu"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" groups=["PierogArea"]]
 position = Vector2( 4, -48 )
 shape = SubResource( 6 )
+
+[node name="Sprite" type="Sprite" parent="Area2D/CollisionShape2D"]
+visible = false
+scale = Vector2( 0.0524019, 0.0524019 )
+texture = ExtResource( 16 )
+
+[connection signal="area_shape_entered" from="Area2D" to="." method="_on_Area2D_area_shape_entered"]
+[connection signal="area_shape_exited" from="Area2D" to="." method="_on_Area2D_area_shape_exited"]
