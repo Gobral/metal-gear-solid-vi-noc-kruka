@@ -3,13 +3,14 @@ extends StaticBody2D
 var leci = false
 var wspina = false
 var aktywowany = false
-var pokaz_hint = false
-var node_slowika: Node2D
 var timer = 0
 const time_for_spaduwing = 10
 const do_usuniecia = 20
+
 var player_interaction_sprite: Sprite
-const wektor_zasiegu = Vector2(3000, 2000)
+var interaction_node: Node2D
+var pokaz_hint = false
+export var interaction_radius = 10
 
 func _ready():
 	player_interaction_sprite = get_child(2).get_child(0).get_child(0)
@@ -27,17 +28,17 @@ func _process(delta):
 		elif leci and timer > do_usuniecia:
 			get_parent().remove_child(self)
 	elif pokaz_hint:
-		przesun_interakcje(node_slowika.get_global_position())
+		przesun_interakcje()
 		
 	
 func startuj():
 	aktywowany = true
 	
-func przesun_interakcje(poz_slowika):
-	player_interaction_sprite.set_offset((poz_slowika - get_global_position()) * 12)
+func przesun_interakcje():
+	player_interaction_sprite.set_offset((interaction_node.get_global_position() - get_global_position()) * interaction_radius)
 
 func interaction_sprite_show(area):
-	node_slowika = area.get_parent()
+	interaction_node = area.get_parent()
 	player_interaction_sprite.visible = true
 	pokaz_hint = true
 
