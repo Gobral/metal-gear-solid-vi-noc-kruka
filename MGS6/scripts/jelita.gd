@@ -6,7 +6,7 @@ onready var sowik = get_node("slowik")
 onready var lina = get_node("Line2D")
 var zubr_zwykly = load("res://scripts/char.gd")
 var zubr_wspinaczkowy = load("res://scripts/wspinak.gd")
-var hak_u_sowika = false
+var hak_u_sowika = true
 var wspinanie = false
 var do_pierozka = Vector2(0, 0)
 var wskok_na_pieroga = Vector2(0, 0)
@@ -14,22 +14,22 @@ var pierogus_shape = null
 
 func _ready():
 	var cscript = load("res://scripts/pierogus.gd")
-	for p in pierozi.get_children():
-		#p.add_child()
-		p.set_script(cscript)
+		
 
 func _physics_process(_delta):
 	var zubrowe_pierogi = zubr.get_colliding_bodies()
-	var sowikowe_pierogi = sowik.get_colliding_bodies()
+	var sowikowe_pierogi = sowik.get_child(4).get_overlapping_areas()
 	
 	for p in pierozi.get_children():
 		if p.leci: spaduwa(p.get_node("AnimatedSprite"))
 
 	lina.set_point_position(1, zubr.global_position)
 		
-	if hak_u_sowika:
+	if hak_u_sowika and Input.is_action_just_pressed("slowik_activate"):
 		lina.set_point_position(0, sowik.global_position)
-		for p in sowikowe_pierogi:
+		for sp in sowikowe_pierogi:
+			var p = sp.get_parent()
+			print(p.get_parent())
 			if p.get_parent().get_name() == "pierozi": 
 				hak_u_sowika = false
 				wspinanie = true
