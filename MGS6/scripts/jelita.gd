@@ -13,7 +13,7 @@ var wskok_na_pieroga = Vector2(0, 0)
 var pierogus_shape = null
 
 func _ready():
-	var cscript = load("res://scripts/pierogus.gd")
+	pass
 		
 
 func _physics_process(_delta):
@@ -29,7 +29,6 @@ func _physics_process(_delta):
 		lina.set_point_position(0, sowik.global_position)
 		for sp in sowikowe_pierogi:
 			var p = sp.get_parent()
-			print(p.get_parent())
 			if p.get_parent().get_name() == "pierozi": 
 				hak_u_sowika = false
 				wspinanie = true
