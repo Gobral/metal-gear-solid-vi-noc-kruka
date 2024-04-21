@@ -35,10 +35,8 @@ func _input(event):
 		if event.is_action_pressed("%s_jump" % name):
 			input["jump"] = true
 		c.get_node("controller").push_input(input)
-		
 
 func pass_controls():
-	
 	pass
 
 func set_camera_position():

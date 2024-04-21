@@ -12,6 +12,7 @@ export var FLY_BRAKE = float(1)
 
 var facing_left = false
 var last_jump = 0.0
+
 #var size_to_bottom = 1
 	
 func movement(mem, now):
@@ -40,6 +41,9 @@ func is_on_floor():
 	if "position" in result:
 		return true
 	return false
+	
+func _ready():
+	pass
 
 func can_jump():
 	if is_on_floor():
@@ -51,20 +55,31 @@ func can_jump():
 func _physics_process(delta):
 	var body = get_node(".")
 	var controller = get_node("controller")
+	var input_buffer = controller.input_buffer
 	var input_map = controller.input_map
 	var wasd_mem = controller.wasd_mem
-	controller.fetch_input()
 	var initial_vel = linear_velocity
 	var jump = false
 	
+	var wasd_from_buffer = [0,0,0,0]
+	var wasd_sum = 0
+	for im in input_buffer:
+		if "wasd" in im:
+			var wasd = im["wasd"]
+			for i in range(4):
+				wasd_from_buffer[i] += wasd[i]
+				if wasd_from_buffer[i] != 0:
+					wasd_sum += 1
+	
 	if input_map:
 		jump = ("jump" in input_map and input_map["jump"])
-		if "wasd" in input_map:
-			var wasd = input_map["wasd"]
+		if wasd_sum > 0:
 			for i in range(4):
-				wasd_mem[i] = movement(wasd_mem[i], wasd[i])
-
+				wasd_mem[i] = movement(wasd_mem[i], wasd_from_buffer[i])
+	
 	input_map = null
+	controller.clear_buffer()
+	controller.fetch_input()
 	
 	var v = Vector2(0, 0)
 	v.x = wasd_mem[3] - wasd_mem[1]
@@ -124,4 +139,3 @@ func _physics_process(delta):
 	if mass < 1:
 		resistance_force *= mass
 	apply_central_impulse(resistance_force)
-	

@@ -1,0 +1,61 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://zwierzaki/pierogus/pierog0007.png" type="Texture" id=1]
+[ext_resource path="res://zwierzaki/pierogus/pierog0003.png" type="Texture" id=2]
+[ext_resource path="res://zwierzaki/pierogus/pierog0005.png" type="Texture" id=3]
+[ext_resource path="res://zwierzaki/pierogus/pierog0008.png" type="Texture" id=4]
+[ext_resource path="res://zwierzaki/pierogus/pierog0001.png" type="Texture" id=5]
+[ext_resource path="res://zwierzaki/pierogus/pierog0009.png" type="Texture" id=6]
+[ext_resource path="res://zwierzaki/pierogus/pierog0010.png" type="Texture" id=7]
+[ext_resource path="res://zwierzaki/pierogus/pierog0002.png" type="Texture" id=8]
+[ext_resource path="res://zwierzaki/pierogus/pierog0004.png" type="Texture" id=9]
+[ext_resource path="res://zwierzaki/pierogus/pierog0013.png" type="Texture" id=10]
+[ext_resource path="res://zwierzaki/pierogus/pierog0011.png" type="Texture" id=11]
+[ext_resource path="res://zwierzaki/pierogus/pierog0000.png" type="Texture" id=12]
+[ext_resource path="res://zwierzaki/pierogus/pierog0006.png" type="Texture" id=13]
+[ext_resource path="res://zwierzaki/pierogus/pierog0012.png" type="Texture" id=14]
+[ext_resource path="res://scripts/pierogus.gd" type="Script" id=15]
+[ext_resource path="res://ikony/interakcje/e.png" type="Texture" id=16]
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 139, 53 )
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ ExtResource( 12 ), ExtResource( 5 ), ExtResource( 8 ), ExtResource( 2 ), ExtResource( 9 ), ExtResource( 3 ), ExtResource( 13 ), ExtResource( 1 ), ExtResource( 4 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 11 ), ExtResource( 14 ), ExtResource( 10 ) ],
+"loop": false,
+"name": "spadu",
+"speed": 12.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 143, 61 )
+
+[node name="pierozik" type="StaticBody2D"]
+position = Vector2( 352, -498 )
+script = ExtResource( 15 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 3, -42 )
+shape = SubResource( 4 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 5 )
+animation = "spadu"
+
+[node name="Area2D" type="Area2D" parent="." groups=["PierogArea"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" groups=["PierogArea"]]
+position = Vector2( 4, -48 )
+shape = SubResource( 6 )
+
+[node name="Sprite" type="Sprite" parent="Area2D/CollisionShape2D"]
+visible = false
+scale = Vector2( 0.0524019, 0.0524019 )
+texture = ExtResource( 16 )
+
+[connection signal="area_shape_entered" from="Area2D" to="." method="_on_Area2D_area_shape_entered"]
+[connection signal="area_shape_exited" from="Area2D" to="." method="_on_Area2D_area_shape_exited"]
