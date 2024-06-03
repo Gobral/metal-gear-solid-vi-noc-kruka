@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://characters/zubr.tscn" type="PackedScene" id=1]
 [ext_resource path="res://characters/slowik.tscn" type="PackedScene" id=2]
 [ext_resource path="res://characters/eye.tscn" type="PackedScene" id=3]
 [ext_resource path="res://textures/jelita.png" type="Texture" id=4]
 [ext_resource path="res://characters/pierozik.tscn" type="PackedScene" id=5]
+[ext_resource path="res://ikony/lina_odwr.png" type="Texture" id=6]
 [ext_resource path="res://scripts/jelita.gd" type="Script" id=19]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -228,5 +229,8 @@ position = Vector2( 42, -983 )
 
 [node name="Line2D" type="Line2D" parent="."]
 points = PoolVector2Array( 0, 0, 302, 63 )
-width = 20.0
+width = 40.0
+default_color = Color( 0.4, 0.501961, 1, 1 )
+texture = ExtResource( 6 )
+texture_mode = 1
 joint_mode = 1
