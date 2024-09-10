@@ -8,6 +8,7 @@ var zubr_zwykly = load("res://scripts/char.gd")
 var zubr_wspinaczkowy = load("res://scripts/wspinak.gd")
 export var hak_u_sowika = false
 export var interaction_radius = 8
+export var line_range_radius = 610
 var wspinanie = false
 var do_pierozka = Vector2(0, 0)
 var wskok_na_pieroga = Vector2(0, 0)
@@ -32,7 +33,7 @@ func _physics_process(_delta):
 		lina.set_point_position(0, sowik.global_position)
 		for sp in sowikowe_pierogi:
 			var p = sp.get_parent()
-			if p.get_parent().get_name() == "pierozi": 
+			if p.get_parent().get_name() == "pierozi" and p.global_position.distance_to(zubr.global_position) < line_range_radius: 
 				dezaktywuj_pieroga(p)
 				hak_u_sowika = false
 				wspinanie = true
